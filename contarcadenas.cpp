@@ -11,7 +11,7 @@ int main(){
 	//Calcular longitud de la cadena
 	ptr = nombre;
 	while (*ptr != '\0') {
-		if (*ptr == '\n') break; // Ignora el salto de línea
+		if (*ptr == '\n') break; // Ignora el salto de lÃ­nea
 	
 		if (*ptr != ' ') {
 			longitud++;  // Solo cuenta letras no espacios
@@ -39,10 +39,11 @@ int main(){
 	}
 	
 	// Mostrar los resultados obtenidos
-	printf("\n La longitud de la cadena es: %d\n", longitud);
-	printf("Tu nombre tiene una cantidad de vocales de: %d\n", vocales);
-	printf("Cadena con vocales reemplazadas: %s\n", nombre);
-
+        printf("\nResultados:\n");
+        printf("- Longitud (sin espacios): %d\n", longitud);
+        printf("- Total de vocales: %d\n", vocales);
+        printf("- Nombre con vocales reemplazadas: %s\n", nombre);
 	
+
 	return 0;
 }

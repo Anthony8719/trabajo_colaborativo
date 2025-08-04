@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 int main(){
 	char nombre[100];
 	char *ptr=nombre;
 	int longitud=0,vocales=0;
 	//Nombre del usuario
 	printf("Hola!!Ingresa tu nombre completo porfavor:");
-fgets(nombre, sizeof(nombre), stdin);//Lee la cadena completa eviando desbordamientos
-nombre[strcspn(nombre, "\n")] = '\0'; // Elimina el salto de línea
+	fgets(nombre, sizeof(nombre), stdin);//Lee la cadena completa eviando desbordamientos
 	
 	//Calcular longitud de la cadena
 	ptr = nombre;
@@ -19,25 +19,22 @@ nombre[strcspn(nombre, "\n")] = '\0'; // Elimina el salto de línea
 		}
 		
 		// Contar vocales (Mayusculas y minusculas)
-		char c = *ptr;
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-			c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-			vocales++;
+		char c = tolower(*ptr); // Convierte a minúscula
+                if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                vocales++;
 		}
-		
 		ptr++;//El puntero incrementa
-	}
+	        }
 	
-	// Reemplazar vocales por asteriscos (*)
-	ptr = nombre;
-	while (*ptr != '\0') {
-		char c = *ptr;
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-			c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-			*ptr = '*';
-		}
-		ptr++;
-	}
+	   // Reemplazar vocales por *
+      ptr = nombre;
+      while (*ptr != '\0') {
+          char c = tolower(*ptr);
+          if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+              *ptr = '*';
+          }
+          ptr++;
+      }
 	
 	// Mostrar los resultados obtenidos
 	printf("\n La longitud de la cadena es: %d\n", longitud);
